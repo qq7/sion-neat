@@ -17,6 +17,12 @@ module.exports = function (eleventyConfig) {
     );
   });
 
+  eleventyConfig.addNunjucksFilter("date", function (date, format, locale) {
+    locale = locale ? locale : "en";
+    moment.locale(locale);
+    return moment(date).format(format);
+  });
+
   // Syntax Highlighting for Code blocks
   eleventyConfig.addPlugin(syntaxHighlight);
 
